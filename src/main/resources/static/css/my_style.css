@@ -1,0 +1,281 @@
+body, html {
+  font-family: Arial, Helvetica, sans-serif;
+}
+    body {
+  background-repeat: no-repeat;
+  background-attachment: fixed;  
+  background-size: cover;
+  background-position: center;
+    margin: 0;
+  
+  /* Style the header */
+}
+.header1 {
+  background-color: #f1f1f1;
+  padding: 1px;
+  text-align: center;
+  position: fixed;
+  top: 0;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+  box-sizing: border-box;
+  width: 100%;
+  font: bold 16px sans-serif;
+  left: 0px;
+  right: 0px;
+  opacity: 0.9;
+  font-family: "calibri", Times, serif;
+}
+  h2,p,label,h3{
+      color:white;
+  }
+
+
+.input-container {
+  display: -ms-flexbox; 
+  display: flex;
+  width: 100%;
+  margin-bottom: 15px;
+  border: rgb(13, 113, 214);
+  background-color: white;
+
+}
+.h2{
+  color: rgb(13, 113, 214);
+}
+.btn:hover {
+  opacity: 1;
+
+}
+
+.icon {
+  padding: 10px;
+  background: rgb(13, 113, 214);
+  color: white;
+  min-width: 50px;
+  text-align: center;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  outline: none;
+}
+
+.input-field:focus {
+  border: 2px solid rgb(13, 113, 214);
+}
+
+/* Set a style for the submit button */
+.btn {
+  background-color:rgb(13, 113, 214);
+  color: white;
+  padding: 15px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+  .container {
+  position: absolute;
+  right: 32%;
+  top: 100px;
+  margin: 20px;
+  max-width: 300px;
+  padding: 16px;
+  background-color: white;
+}
+
+.btn:hover {
+  opacity: 1;
+}
+.footer{
+  background-color: #44474b;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+  box-sizing: border-box;
+  position:fixed; 
+  bottom:0px; 
+  height:20px; 
+  left:8px; 
+  right:8px; 
+  overflow:hidden;
+  font: bold 16px sans-serif;
+  opacity: 0.9;
+  font-family: "calibri", Times, serif;
+  /* margin: 1px; */
+  color:white;
+  
+}
+
+.header{
+  position: fixed;
+  top: 0;
+  background-color: rgb(13, 113, 214);
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+  box-sizing: border-box;
+  width: 100%;
+  font: bold 16px sans-serif;
+  left: 0px;
+  right: 0px;
+  opacity: 0.9;
+  font-family: "calibri", Times, serif;
+}
+
+
+.sidepanel  {
+width: 0;
+position: fixed;
+z-index: 1;
+height: 100%;
+top: 0;
+left: 0;
+background-color: #111;
+overflow-x: hidden;
+transition: 0.5s;
+padding-top: 60px;
+opacity: 0.9;
+}
+
+.sidepanel a {
+padding: 8px 8px 8px 32px;
+text-decoration: none;
+font-size: 25px;
+color: #818181;
+display: block;
+transition: 0.3s;
+}
+
+.sidepanel a:hover {
+color: #f1f1f1;
+}
+
+.sidepanel .closebtn {
+position: absolute;
+top: 0;
+right: 25px;
+font-size: 36px;
+}
+
+.openbtn {
+font-size: 20px;
+cursor: pointer;
+background-color: #111;
+color: white;
+padding: 10px 15px;
+border: none;
+}
+
+.openbtn:hover {
+background-color:#444;
+}
+
+  #toolbar {
+    display: flex;
+    height: 100%;
+    padding: 0 1rem;
+  }
+      #he{
+          display: flex;
+          align-items: flex-end;
+          justify-content: center;
+          margin-right: 15px;
+          width: 35px;
+          height: 30px;
+          height: 100%;
+          font-size: 12px;
+          background-size: contain;
+          background-repeat: no-repeat;
+          user-select: none;
+          cursor: pointer;
+      }
+    #toolbar.warning:after {
+      content: 'Selected data cannot be used to create a chart.';
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+      color: var(--smart-error);
+    }
+
+    #toolbar > div {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      margin-right: 15px;
+      width: 35px;
+      height: 30px;
+      height: 100%;
+      font-size: 12px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      user-select: none;
+      cursor: pointer;
+    }
+
+      #toolbar > div:hover {
+        background-color: var(--smart-grid-column-header-background-hover);
+      }
+
+      #toolbar > div:active {
+        background-color: var(--smart-grid-column-header-background-active);
+      }
+
+      #toolbar > div.warning {
+        outline: 2px solid var(--smart-error);
+      }
+      
+.sidenav {
+height: 100%;
+width: 0;
+position: fixed;
+z-index: 1;
+top: 0;
+right: 0;
+background-color: #111;
+overflow-x: hidden;
+transition: 0.5s;
+padding-top: 60px;
+}
+
+.sidenav a {
+padding: 8px 8px 8px 32px;
+text-decoration: none;
+font-size: 25px;
+color: #818181;
+display: block;
+transition: 0.3s;
+}
+
+.sidenav a:hover {
+color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+position: absolute;
+top: 0;
+right: 25px;
+font-size: 36px;
+margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+.sidenav {padding-top: 15px;}
+.sidenav a {font-size: 18px;}
+}
+.pan{
+  font-size:40px;
+  cursor:pointer;
+  float:right;
+  padding-top: 300px;
+  color: white;
+  }
+  .column {
+    float: left;
+    width:30%;
+    padding: 0 10px;
+  }
+  
+  /* Remove extra left and right margins, due to padding */
+  .row {margin: 0 -5px;}
+
+  /*drop down and search*/
+

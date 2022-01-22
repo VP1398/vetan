@@ -1,0 +1,12 @@
+﻿[
+    {
+	"Total No cp": "5",
+        "Net Amount cp": "1113000",
+        "Settled Amount": "469800",
+        "Pending Amount": "643200",
+        "Total No op": "5",
+        "Net Amount op": "810920",
+        "Total No lp": "5",
+	"Net Amount lp": "846640"
+    }
+]

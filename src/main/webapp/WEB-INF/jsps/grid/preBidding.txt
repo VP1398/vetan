@@ -1,0 +1,12 @@
+﻿[
+    {
+	"Sl.No": "1",
+        "Job requisitions Made": "5",
+        "Giggers Responded": "25",
+        "Shortlisted": "15",
+        "Successful Bid": "10",
+        "Failed Bids": "5",
+        "Revised Bids": "",
+	"WO Released": "2"
+    }
+]
