@@ -197,8 +197,8 @@ body {
  
     <button class="tablinks"  id="pat" data-toggle="modal" data-target="#myModal1" onclick="go('grid/vetanpie')">Dashboard</button>
     <button class="tablinks" id="pat" data-toggle="modal" data-target="#myModal" onclick="go('grid/grid11')">Salary Register</button>
-    <!-- button class="tablinks" id="pat" data-toggle="modal" data-target="#myModal" onclick="go('grid/grid10')">10 Sal Register</button>
-    <button class="tablinks" id="pat" data-toggle="modal" data-target="#myModal" onclick="go('grid/gridar')">Arrears</button-->
+    <button class="tablinks" id="pat" data-toggle="modal" data-target="#myModal" onclick="go('grid/grid10')">10 Sal Register</button>
+    <button class="tablinks" id="pat" data-toggle="modal" data-target="#myModal" onclick="go('grid/gridar')">Arrears</button>
       <button class="tablinks" id="pat" data-toggle="modal" data-target="#myModal" onclick="go('grid/gridvar')">Variance</button>
    <!--   <button class="tablinks" id="pat" data-toggle="modal" data-target="#myModal" onclick="go('grid/row.jsp')">Scale3</button>
     <button class="tablinks" id="pat" data-toggle="modal" data-target="#myModal" onclick="go('grid/row.jsp')">Scale4</button>
