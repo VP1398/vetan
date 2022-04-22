@@ -14,7 +14,10 @@ public class Reimburse {
 		this.claimed_amt = claimed_amt;
 		this.remarks = remarks;
 	}
-		public String getExpense() {
+	    
+	
+		
+	public String getExpense() {
 		return expense;
 	}
 	public String getVendor() {
@@ -38,6 +41,9 @@ public class Reimburse {
 	public String getRemarks() {
 		return remarks;
 	}
+	
+
+	
 	public void setExpense(String expense) {
 		this.expense = expense;
 	}
@@ -70,6 +76,7 @@ public class Reimburse {
 	    private String  ent_amt;
 	    private String  claimed_amt;
 	    private String  remarks;
+	   
 
 
 }

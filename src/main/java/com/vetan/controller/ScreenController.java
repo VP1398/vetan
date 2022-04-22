@@ -75,13 +75,11 @@ public class ScreenController {
 			  	empscreenList.add(new Reimburse(
 			  			emprem.getString("expense"),
 			  			emprem.getString("vendor"),
-			  			
 			  		    emprem.getString("inv_no"),
 			  		    emprem.getString("inv_date"),
 			  			emprem.getString("inv_amt"),
 			  			emprem.getString("ent_amt"),
 			  			emprem.getString("claimed_amt"),
-
 			  			emprem.getString("remarks")
 		
                                 ));

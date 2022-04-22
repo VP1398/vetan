@@ -12,8 +12,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 public class VetanProjectApplication {
 
-	//public static void main(String[] args) {
-	//	SpringApplication.run(VetanProjectApplication.class, args);
-	//}
+//	public static void main(String[] args) {
+//	SpringApplication.run(VetanProjectApplication.class, args);
+//	}
 
 }

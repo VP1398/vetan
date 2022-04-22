@@ -22,54 +22,43 @@
     <script type="text/javascript">
         $(document).ready(function () {
             // prepare the data
-            var data = new Array();
-
-            var firstNames = ["Nancy", "Andrew", "Janet", "Margaret", "Steven", "Michael", "Robert", "Laura", "Anne"];
-            var lastNames = ["Davolio", "Fuller", "Leverling", "Peacock", "Buchanan", "Suyama", "King", "Callahan", "Dodsworth"];
-            var titles = ["Sales Representative", "Vice President, Sales", "Sales Representative", "Sales Representative", "Sales Manager", "Sales Representative", "Sales Representative", "Inside Sales Coordinator", "Sales Representative"];
-            var titleofcourtesy = ["Ms.", "Dr.", "Ms.", "Mrs.", "Mr.", "Mr.", "Mr.", "Ms.", "Ms."];
-            var birthdate = ["08-Dec-48", "19-Feb-52", "30-Aug-63", "19-Sep-37", "04-Mar-55", "02-Jul-63", "29-May-60", "09-Jan-58", "27-Jan-66"];
-            var hiredate = ["01-May-92", "14-Aug-92", "01-Apr-92", "03-May-93", "17-Oct-93", "17-Oct-93", "02-Jan-94", "05-Mar-94", "15-Nov-94"];
-            var address = ["507 - 20th Ave. E. Apt. 2A", "908 W. Capital Way", "722 Moss Bay Blvd.", "4110 Old Redmond Rd.", "14 Garrett Hill", "Coventry House", "Miner Rd.", "Edgeham Hollow", "Winchester Way", "4726 - 11th Ave. N.E.", "7 Houndstooth Rd."];
-            var city = ["Seattle", "Tacoma", "Kirkland", "Redmond", "London", "London", "London", "Seattle", "London"];
-            var postalcode = ["98122", "98401", "98033", "98052", "SW1 8JR", "EC2 7JR", "RG1 9SP", "98105", "WG2 7LT"];
-            var country = ["USA", "USA", "USA", "USA", "UK", "UK", "UK", "USA", "UK"];
-            var homephone = ["(206) 555-9857", "(206) 555-9482", "(206) 555-3412", "(206) 555-8122", "(71) 555-4848", "(71) 555-7773", "(71) 555-5598", "(206) 555-1189", "(71) 555-4444"];
-            var notes = ["Education includes a BA in psychology from Colorado State University in 1970.  She also completed 'The Art of the Cold Call.'  Nancy is a member of Toastmasters International.",
-                "Andrew received his BTS commercial in 1974 and a Ph.D. in international marketing from the University of Dallas in 1981.  He is fluent in French and Italian and reads German.  He joined the company as a sales representative, was promoted to sales manager in January 1992 and to vice president of sales in March 1993.  Andrew is a member of the Sales Management Roundtable, the Seattle Chamber of Commerce, and the Pacific Rim Importers Association.",
-                "Janet has a BS degree in chemistry from Boston College (1984).  She has also completed a certificate program in food retailing management.  Janet was hired as a sales associate in 1991 and promoted to sales representative in February 1992.",
-                "Margaret holds a BA in English literature from Concordia College (1958) and an MA from the American Institute of Culinary Arts (1966).  She was assigned to the London office temporarily from July through November 1992.",
-                "Steven Buchanan graduated from St. Andrews University, Scotland, with a BSC degree in 1976.  Upon joining the company as a sales representative in 1992, he spent 6 months in an orientation program at the Seattle office and then returned to his permanent post in London.  He was promoted to sales manager in March 1993.  Mr. Buchanan has completed the courses 'Successful Telemarketing' and 'International Sales Management.'  He is fluent in French.",
-                "Michael is a graduate of Sussex University (MA, economics, 1983) and the University of California at Los Angeles (MBA, marketing, 1986).  He has also taken the courses 'Multi-Cultural Selling' and 'Time Management for the Sales Professional.'  He is fluent in Japanese and can read and write French, Portuguese, and Spanish.",
-                "Robert King served in the Peace Corps and traveled extensively before completing his degree in English at the University of Michigan in 1992, the year he joined the company.  After completing a course entitled 'Selling in Europe,' he was transferred to the London office in March 1993.",
-                "Laura received a BA in psychology from the University of Washington.  She has also completed a course in business French.  She reads and writes French.",
-                "Anne has a BA degree in English from St. Lawrence College.  She is fluent in French and German."];
-
-            var k = 0;
-            for (var i = 0; i < firstNames.length; i++) {
-                var row = {};
-                row["firstname"] = firstNames[k];
-                row["lastname"] = lastNames[k];
-                row["title"] = titles[k];
-                row["titleofcourtesy"] = titleofcourtesy[k];
-                row["birthdate"] = birthdate[k];
-                row["hiredate"] = hiredate[k];
-                row["address"] = address[k];
-                row["city"] = city[k];
-                row["postalcode"] = postalcode[k];
-                row["country"] = country[k];
-                row["homephone"] = homephone[k];
-                row["notes"] = notes[k];
-                data[i] = row;
-                k++;
-            }
-
-            var source =
-            {
-                localdata: data,
-                datatype: "array"
+        	 var source = {
+            		 updaterow: function (rowid, rowdata, commit) {
+                         // synchronize with the server - send update command   
+                         commit(true);
+                     },
+                     
+                datatype: 'json',
+                datafields: [
+                    {name: 'expense', type: 'string'}, 
+                    {name: 'vendor', type: 'string'}, 
+                    {name: 'inv_no', type: 'number'}, 
+                    {name: 'inv_date', type: 'date'}, 
+                    {name: 'inv_amt', type: 'number'}, 
+                    {name: 'ent_amt', type: 'number'}, 
+                    {name: 'claimed_amt', type: 'number'}, 
+                    {name: 'remarks', type: 'string'},
+                    {name: 'data', type: 'image'}
+               ],
+                id: 'id',
+                url: '${pageContext.request.contextPath}/screen/getReimburse',
+                type: 'POST',
+                async: true
             };
+            
+        	 var dataAdapter = new $.jqx.dataAdapter(source);
+             var getLocalization = function () {
+                 var localizationobj = {};
 
+                 localizationobj.currencysymbol = "Rs. ";
+                 localizationobj.currencysymbolposition = "before";
+                 localizationobj.decimalseparator = ".";
+                 localizationobj.thousandsseparator = ",";
+
+                 return localizationobj;
+             }
+             
+           
             var initrowdetails = function (index, parentElement, gridElement, datarecord) {
                 var tabsdiv = null;
                 var information = null;
@@ -102,30 +91,29 @@
 
                     var photo = $("<div class='jqx-rc-all' style='margin: 10px;'><b>Photo:</b></div>");
                     var image = $("<div style='margin-top: 10px;'></div>");
-                    var imgurl = '/vetan/images/' + datarecord.firstname.toLowerCase() + '.png';
-                    var img = $('<img height="60" src="' + imgurl + '"/>');
+                    var img = $('<img height="60" src="' + datarecord.data + '"/>');
                     image.append(img);
                     image.appendTo(photo);
                     photocolumn.append(photo);
 
-                    var firstname = "<div style='margin: 10px;'><b>First Name:</b> " + datarecord.firstname + "</div>";
-                    var lastname = "<div style='margin: 10px;'><b>Last Name:</b> " + datarecord.lastname + "</div>";
-                    var title = "<div style='margin: 10px;'><b>Title:</b> " + datarecord.title + "</div>";
-                    var address = "<div style='margin: 10px;'><b>Address:</b> " + datarecord.address + "</div>";
-                    $(leftcolumn).append(firstname);
-                    $(leftcolumn).append(lastname);
-                    $(leftcolumn).append(title);
-                    $(leftcolumn).append(address);
+                    var expense = "<div style='margin: 10px;'><b>Expense:</b> " + datarecord.expense + "</div>";
+                    var vendor = "<div style='margin: 10px;'><b>Vendor:</b> " + datarecord.vendor + "</div>";
+                    var inv_no = "<div style='margin: 10px;'><b>Invoice Number:</b> " + datarecord.inv_no + "</div>";
+                    var inv_amt = "<div style='margin: 10px;'><b>Invoice Amount:</b> " + datarecord.inv_amt + "</div>";
+                    $(leftcolumn).append(expense);
+                    $(leftcolumn).append(vendor);
+                    $(leftcolumn).append(inv_no);
+                    $(leftcolumn).append(inv_amt);
 
-                    var postalcode = "<div style='margin: 10px;'><b>Postal Code:</b> " + datarecord.postalcode + "</div>";
-                    var city = "<div style='margin: 10px;'><b>City:</b> " + datarecord.city + "</div>";
-                    var phone = "<div style='margin: 10px;'><b>Phone:</b> " + datarecord.homephone + "</div>";
-                    var hiredate = "<div style='margin: 10px;'><b>Hire Date:</b> " + datarecord.hiredate + "</div>";
+                    var inv_date = "<div style='margin: 10px;'><b>Invoice Date:</b> " + datarecord.inv_date + "</div>";
+                    var ent_amt = "<div style='margin: 10px;'><b>Amount:</b> " + datarecord.ent_amt + "</div>";
+                    var claimed_amt = "<div style='margin: 10px;'><b>Claimed Amount:</b> " + datarecord.claimed_amt + "</div>";
+                    var remarks = "<div style='margin: 10px;'><b>Remarks:</b> " + datarecord.remarks + "</div>";
 
-                    $(rightcolumn).append(postalcode);
-                    $(rightcolumn).append(city);
-                    $(rightcolumn).append(phone);
-                    $(rightcolumn).append(hiredate);
+                    $(rightcolumn).append(inv_date);
+                    $(rightcolumn).append(ent_amt);
+                    $(rightcolumn).append(claimed_amt);
+                    $(rightcolumn).append(remarks);
 
                     var notescontainer = $('<div style="white-space: normal; margin: 5px;"><span>' + datarecord.notes + '</span></div>');
                     $(notes).append(notescontainer);
@@ -160,11 +148,14 @@
                 },
                 initrowdetails: initrowdetails,
                 columns: [
-                      { text: 'First Name', datafield: 'firstname', width: 200 },
-                      { text: 'Last Name', datafield: 'lastname', width: 200 },
-                      { text: 'Title', datafield: 'title', width: 180 },
-                      { text: 'City', datafield: 'city', width: 100 },
-                      { text: 'Country', datafield: 'country'}
+                      { text: 'Expense', datafield: 'expense', width: 200 },
+                      { text: 'Vendor', datafield: 'vendor', width: 200 },
+                      { text: 'Invoice Number', datafield: 'inv_no', width: 180 },
+                      { text: 'Invoice amount', datafield: 'inv_amt', width: 100 },
+                      { text: 'Invoice Date', datafield: 'inv_date', width: 100 },
+                      { text: ' amount', datafield: 'ent_amt', width: 100 },
+                      { text: 'Claimed Amount', datafield: 'claimed_amt', width: 100 },
+                      { text: 'Remarks', datafield: 'remarks'}
                   ]
             });
         });
